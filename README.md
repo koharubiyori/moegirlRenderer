@@ -15,6 +15,8 @@ moegirl.init()
 
 所有配置都是可选参数，在`moegirl.config[moduleName]`上进行配置。有些选项是可响应配置(属性以`$`开头)，即执行过`moegirl.init()`后，修改配置项还会触发相应的动作。
 
+配置请参考：[src/@types/globals.d.ts#9](https://github.com/koharubiyori/moegirlRenderer/blob/9f7275dd46dc792636b42aa44d558255f21ee427/src/%40types/globals.d.ts#L9)
+
 **请不要对一个有子对象的配置项直接赋值一个新对象，也不要给moegirl.config赋值新对象，这将导致响应式结构被破坏。**
 
 ## 定制
