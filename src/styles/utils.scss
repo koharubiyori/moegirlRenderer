@@ -1,0 +1,6 @@
+/* 变量、minin、function等，这个文件已经全局引入，不需要再手动引入 */
+
+// 配合 /utils/setCssColorByComputedColor.ts 使用
+@function useComputedColorVars($varName, $alpha: 1) {
+  @return unquote('rgba(var(--#{$varName}-r), var(--#{$varName}-g), var(--#{$varName}-b), #{$alpha})');
+};

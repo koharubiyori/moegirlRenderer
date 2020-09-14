@@ -1,0 +1,18 @@
+{
+  "presets": [
+    ["@babel/preset-env", {
+      "useBuiltIns": "usage", // 根据调用自动添加polyfill
+      "corejs": 3  // 指定corejs的版本，@babel/polyfill从7.4后已经弃用
+    }],  // 包含一系列常用预设
+    
+    // 取代ts-loader，将流程从 ts -> ts-loader -> js -> babel -> js 转为 ts -> babel -> js
+    // babel将直接去掉ts代码，而不是去编译，这样可以大大加快编译速度，不过需要在babel中对ts的特殊语法进行翻译。
+    // 但这样有类型错误也不会出现编译失败，可以使用eslint来增强代码检查能力。并使用tsc -noEmit手动执行检查(见：package.json的scripts.type-check)
+    "@babel/preset-typescript"
+  ],
+
+  "plugins": [
+    "@babel/plugin-proposal-class-properties", // 解析class中的属性简写(在构造函数外给属性赋值的写法)
+    "@babel/plugin-proposal-object-rest-spread"  // 解析解构语法
+  ]
+}

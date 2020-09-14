@@ -1,0 +1,19 @@
+.heimu {
+  background-color: black;
+  
+  &.heimu-show {
+    color: white;
+
+    a {
+      color: var(--color-primary);
+    }
+  }
+
+  &.heimu-useTransition {
+    transition: all 0.2s;
+  }
+
+  a {
+    color: black;
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "baisc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn dev",
+    "dev": "npx cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.conf.js",
+    "build": "npx cross-env NODE_ENV=production webpack --config config/webpack.prod.conf.js",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch"
+  },
+  "dependencies": {
+    "@types/jquery": "^3.5.1",
+    "@types/qs": "^6.9.4",
+    "jquery": "^3.5.1",
+    "qs": "^6.9.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
+    "autoprefixer": "^9.8.6",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.0.3",
+    "cross-env": "^7.0.2",
+    "css-loader": "^4.2.2",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.11.0",
+    "node-sass": "^4.14.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
+    "sass": "^1.26.10",
+    "sass-loader": "^10.0.1",
+    "sass-resources-loader": "^2.1.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^5.0.0-beta.29",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.1.2"
+  }
+}

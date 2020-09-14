@@ -1,0 +1,8 @@
+.infobox {
+  float: none !important;
+  margin: 10px auto;
+
+  tr > td:not(:only-child):nth-child(1) {
+    background-color: useComputedColorVars('headerColor', 0.3);
+  }
+}

@@ -1,0 +1,8 @@
+.infoBox {
+  padding: 7px;
+  background-color: useComputedColorVars('borderLeftColor', 0.1);
+
+  .infoBoxContent:not(foo) {
+    background-color: transparent;
+  }
+}
