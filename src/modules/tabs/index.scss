@@ -1,0 +1,29 @@
+.Tabs {
+  .TabLabelContainer {
+    display: flex;
+    flex-wrap: wrap;
+
+    p {
+      margin: 5px 0;
+    }
+
+    .TabLabelText {
+      padding: 5px 10px;
+      
+      &.Tabs-active {
+        background-color: var(--color-light);
+      }
+    }
+  }
+
+  .TabContentContainer {
+
+    .TabContentText {
+      display: none;
+      
+      &.Tabs-active {
+        display: block;    
+      }
+    }
+  }
+}

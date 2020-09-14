@@ -8,10 +8,10 @@ const { config, watchChange } = createModuleConfig('heimu', {
 
 watchChange<boolean>('$enabled', value => {
   if (value) {
-    $('.heimu').removeClass('heimu-show').off('click')
+    $('.heimu').removeClass('heimu-show')
     render()
   } else {
-    $('.heimu').addClass('heimu-show').off('click')
+    $('.heimu').addClass('heimu-show')
   }
 })
 
@@ -20,16 +20,17 @@ watchChange<boolean>('$useTransition', value => {
 })
 
 function render() {
-  console.log(config)
   if (config.$enabled) {  
     if (config.$useTransition) $('.heimu').addClass('heimu-useTransition')
     
-    $('.heimu').one('click', function(e) {
-      $(this).addClass('heimu-show')
-      if ($(this).find('a')) {
-        e.preventDefault()
-        e.stopPropagation()
-      }
+    $('.heimu').each(function() {
+      this.addEventListener('click', e => {
+        if ($(this).find('a') && !$(this).hasClass('heimu-show')) {
+          e.preventDefault()
+          e.stopPropagation()
+        }
+        $(this).addClass('heimu-show')
+      }, true)
     })
   } else {
     $('.heimu').addClass('heimu-show')

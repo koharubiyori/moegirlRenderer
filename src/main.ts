@@ -17,7 +17,7 @@ window.moegirl = {
 
 ;(async () => {
   if (process.env.NODE_ENV === 'development') {
-    const articleHtml = await loadArticle('萌娘百科_talk:讨论版')
+    const articleHtml = await loadArticle('大宫忍')
   
     // 萌百的图站有盗链检测，这里图片全部走代理，去掉referer
     const commonUrlRegex = /https:\/\/img\.moegirl\.org\.cn\/common\//g

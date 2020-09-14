@@ -1,0 +1,33 @@
+@import './icon.scss';
+
+.mw-editsection-bracket,
+.mw-editsection-bracket {
+  display: none;
+}
+
+h2, h3, h4 {
+  position: relative;
+}
+
+.mw-headline {
+  &::after {
+    content: '　';
+    display: inline;
+  }
+}
+
+.mw-editsection {
+  position: absolute;
+  right: 0;  
+
+  > a {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background-image: url(unquote($editLockIcon));
+    background-repeat: no-repeat;
+    background-size: 28px;
+    font-size: 0;
+    overflow: hidden;
+  }
+}
