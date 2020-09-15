@@ -1,0 +1,23 @@
+.thumb {
+  width: min-content;
+  border: 1px var(--color-border) solid;
+  margin: 0 auto;
+
+  .thumbcaption {
+    text-align: center;
+    margin-bottom: 3px;
+
+    &::before {
+      content: '';
+      display: block;
+      height: 3px;
+      background-color: var(--color-border);
+      margin: 0 5px;
+      margin-bottom: 3px;
+    } 
+
+    .magnify {
+      display: none;
+    }
+  }
+}

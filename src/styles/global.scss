@@ -1,4 +1,4 @@
-// 全局生效样式，不要在这里写标签选择器以外的样式
+// 全局生效样式，不要在这里写和模块内容有关的样式
 
 body {
   margin: 10px;
@@ -16,4 +16,9 @@ a {
   &:active {
     opacity: 0.3;
   }
+}
+
+// 隐藏ruby用于复制时带上的括号
+.template-ruby-hidden {
+  display: none;
 }

@@ -1,0 +1,36 @@
+.mw-collapsible {
+  background-color: var(--color-background);
+  margin: 1em 0;
+  border: 1px var(--color-border) solid;
+  border-collapse: collapse;
+
+  &.mw-collapsed {
+    > tbody {
+      > tr:last-child {
+        display: none;
+      }
+    }
+  }
+
+  > tbody {
+    > tr:first-child {
+      > th {
+        background-color: var(--color-background);
+        text-align: center;
+        border: 1px var(--color-border) solid;
+        padding: 3px 5px;
+      }
+    }
+
+    > tr:last-child {
+      border: 1px var(--color-border) solid;
+      padding: 0.2em 0.4em;
+    }
+  }
+
+  .collapseButton {
+    float: right;
+    color: var(--color-primary);
+    margin-left: 5px;
+  }
+}

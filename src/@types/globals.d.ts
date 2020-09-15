@@ -16,6 +16,11 @@ declare interface Moegirl {
     link: {
       onClick(payload: { type: keyof __MoegirlConfig.Link['dataMaps'], data: any }): void // 点击链接的回调函数
     }
+
+    collapsible: {
+      $showButtonText: string // 展开按钮文字
+      $hideButtonText: string // 隐藏按钮文字
+    }
   }
 }
 
