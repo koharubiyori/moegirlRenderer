@@ -25,6 +25,9 @@ export interface LinkDataMaps {
     pageName: string
     section: 'new' | number
   }
+  notExistEdit: {
+    pageName: string
+  }
   watch: {
     pageName: string
   }
@@ -55,6 +58,7 @@ export default () => {
     if (moegirlDomainRegex.test(link) || ['/', '#'].includes(link[0])) {
       link = link.replace(moegirlDomainRegex, '')
       
+      // 判断是请求index.php的链接还是条目名的链接
       if (!/^\/index\.php\?/.test(link)) {
         const [pageName, author] = link.replace(/^\//, '').split('#')
 
@@ -74,6 +78,10 @@ export default () => {
           return triggerOnClick('author', { id: author })
         }
 
+        if ($(this).hasClass('new')) {
+          return triggerOnClick('notExist', { pageName: link })
+        }
+
         // 条目
         let displayTitle = (
           $(e.target).attr('title') || 
@@ -88,6 +96,10 @@ export default () => {
 
         // 编辑页
         if (params.action === 'edit') {
+          if ($(this).hasClass('new')) {
+            return triggerOnClick('notExistEdit', { pageName: params.title })
+          }
+          
           return triggerOnClick('edit', {
             pageName: params.title,
             section: /^\d+$/.test(params.section) ? parseInt(params.section) : params.section,

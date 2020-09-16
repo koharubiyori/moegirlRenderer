@@ -4,11 +4,10 @@ import './index.scss'
 export default () => {
   const maxWidth = $('.mw-parser-output').width()! - 10
   
-  $('.thumb > .thumbinner')
-    .css('width', '')
-    .find('img').each(function() {
-      if (parseInt($(this).attr('width')!) > maxWidth) {
-        $(this).attr({ width: maxWidth + 'px', height: '' })
-      }
-    })
+  $('.thumb > .thumbinner').css('width', '')
+  $('.image > img').each(function() {
+    if (parseInt($(this).attr('width')!) > maxWidth) {
+      $(this).attr({ width: maxWidth + 'px', height: '' })
+    }
+  })
 }

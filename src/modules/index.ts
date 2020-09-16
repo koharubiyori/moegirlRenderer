@@ -6,6 +6,7 @@ const modules: Function[] = requireCtx.keys()
 // 这里再进行一些零碎的操作
 modules.push(() => {
   $('#toc').remove()  // 移除目录  
+  $(':root').css('--max-content-width', $('.mw-parser-output').width()! + 'px') // 添加一个最大内容宽度变量
 })
 
 export default modules

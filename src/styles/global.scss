@@ -18,6 +18,11 @@ a {
   }
 }
 
+ul, ol {
+  padding-left: 20px;
+}
+
+
 // 隐藏ruby用于复制时带上的括号
 .template-ruby-hidden {
   display: none;

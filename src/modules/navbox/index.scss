@@ -1,0 +1,78 @@
+// 注意：navbox的样式受collapsible的影响
+.navbox {
+  border: 1px var(--color-border) solid;
+  padding: 2px;
+}
+
+.navbox, .navbox .navbox-subgroup {
+  background-color: white;
+  text-align: center;
+
+  .mw-collapsible {
+    table-layout: auto;
+    border: none;
+    margin: 0 auto;
+  }
+
+  .navbox-title {
+    padding: 5px;
+    border: none;
+  }
+
+  .navboxBlock {
+    display: inline-table;
+    box-sizing: border-box;
+    border-left-style: solid;
+    border-left-color: useComputedColorVars('groupColor');
+    margin: 5px;
+
+    &.navboxBlock-show {
+      width: calc(100% - 5px);
+      display: table;
+      border-left-width: 15px;
+
+      > .navbox-list {
+        display: table-row;
+      }
+    }
+
+    > .navbox-group {
+      text-align: center;
+      padding: 3px 5px !important;
+      box-sizing: border-box;
+
+      > div:first-child {
+        display: inline-block;
+      }
+    }
+
+    > .navbox-list {
+      display: none;
+
+      // 只有一个navbox-list子节点，表示嵌套了一个sub-navbox
+      &:only-child {
+        display: table-row;
+      }
+    }
+
+    .navboxCollapseButton {
+      padding: 0 5px;
+      font-size: 16px;
+      transform: scale(1.3);
+      font-weight: bold;
+      float: right;
+      position: relative;
+      top: -1px;
+    }
+  }
+
+  .mw-collapsible > tbody > tr:last-child {
+    border: none;
+    padding: 0;
+  }
+
+  .navbox-subgroup {
+    border: none;
+    margin: 0;
+  }
+}

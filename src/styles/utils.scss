@@ -1,6 +1,15 @@
-/* 变量、minin、function等，这个文件已经全局引入，不需要再手动引入 */
+/* 
+  sass的变量、minin、function等，这个文件已经全局引入，不需要再手动引入 
+  不要在这里写会生成实际代码的东西！  
+*/
 
 // 配合 /utils/setCssColorByComputedColor.ts 使用
 @function useComputedColorVars($varName, $alpha: 1) {
   @return unquote('rgba(var(--#{$varName}-r), var(--#{$varName}-g), var(--#{$varName}-b), #{$alpha})');
 };
+
+%textLimit {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

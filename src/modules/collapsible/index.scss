@@ -1,12 +1,18 @@
+// 注意：修改collapsible的样式将影响navbox
 .mw-collapsible {
   background-color: var(--color-background);
   margin: 1em 0;
   border: 1px var(--color-border) solid;
   border-collapse: collapse;
-
+  width: var(--max-content-width);
+  table-layout: fixed;
+  
   &.mw-collapsed {
+    width: auto;
+    table-layout: auto;
+    
     > tbody {
-      > tr:last-child {
+      > tr:not(:first-child) {
         display: none;
       }
     }
@@ -25,6 +31,15 @@
     > tr:last-child {
       border: 1px var(--color-border) solid;
       padding: 0.2em 0.4em;
+
+      > td {
+        padding: 8px;
+        overflow: auto;
+
+        > p:first-child, p:last-child {
+          margin: 0;
+        }
+      }
     }
   }
 
