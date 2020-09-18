@@ -27,6 +27,6 @@ export default () => {
         collapseButton.text(collapseButtonText($(this).hasClass('mw-collapsed')))
       })
     
-    $(this).find('> tbody > tr > th').append(collapseButton)
+    $(this).find('> tbody > tr > th').eq(0).append(collapseButton)
   })
 }

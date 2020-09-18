@@ -21,6 +21,33 @@ declare interface Moegirl {
       $showButtonText: string // 展开按钮文字
       $hideButtonText: string // 隐藏按钮文字
     }
+
+    biliPlayer: {
+      texts: {
+        loading: string
+        removed: string
+        netErr: string
+      }
+      onClick(payload: __MoegirlConfig.BiliPlayer['videoData']): void
+      onLongPress(payload: __MoegirlConfig.BiliPlayer['videoData']): void
+    }
+
+    // 功能性模块
+    request: {
+      callbacks: {  // 保存所有回调，用于将响应的数据传回webView
+        [callbackId: number]: {
+          resolve(value: any): void
+          reject(value: any): void
+        }
+      }
+
+      // 向外部传请求数据，会包含一个callbackId，用这个id在callbacks上调用回调
+      onRequested(requestData: __MoegirlConfig.Request['requestData']): void 
+    }
+
+    vibrate: {
+      onCalled(): void
+    }
   }
 }
 

@@ -14,16 +14,18 @@
     margin: 0 auto;
   }
 
-  .navbox-title {
+  // 增加权重，覆盖mw-collapsible的样式
+  .navbox-title:not(foo):not(foo):not(foo):not(foo):not(foo) {  
     padding: 5px;
     border: none;
+    background-color: #DAF4DA;
   }
 
   .navboxBlock {
     display: inline-table;
     box-sizing: border-box;
     border-left-style: solid;
-    border-left-color: useComputedColorVars('groupColor');
+    border-left-color: useComputedColorVars('groupColor') !important;
     margin: 5px;
 
     &.navboxBlock-show {
@@ -40,6 +42,7 @@
       text-align: center;
       padding: 3px 5px !important;
       box-sizing: border-box;
+      background-color: #DAF4DA;
 
       > div:first-child {
         display: inline-block;
@@ -67,7 +70,11 @@
   }
 
   .mw-collapsible > tbody > tr:last-child {
-    border: none;
+    border: {
+      top: none;
+      right: none;
+      bottom: none;
+    }
     padding: 0;
   }
 

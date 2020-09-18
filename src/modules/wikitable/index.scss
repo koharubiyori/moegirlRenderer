@@ -2,15 +2,24 @@
   overflow: auto;
 }
 
-/*
 .wikitable {
   width: max-content;
-
-  background-color: #f8f9fa;
-  color: #222;
   margin: 1em 0;
-  border: 1px solid #a2a9b1;
+  border: 1px solid var(--color-border);
   border-collapse: collapse;
-}
 
-*/
+  &.mw-collapsible {
+    table-layout: auto;
+  }
+
+  th {
+    border: 1px solid var(--color-border);
+    background-color: var(--color-background);
+    text-align: center;
+  }
+
+  td {
+    border: 1px solid var(--color-border);
+    padding: 0.2em 0.4em;
+  }
+}

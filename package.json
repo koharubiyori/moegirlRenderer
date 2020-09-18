@@ -11,9 +11,12 @@
     "type-check:watch": "npm run type-check -- --watch"
   },
   "dependencies": {
+    "@types/hammerjs": "^2.0.36",
     "@types/jquery": "^3.5.1",
     "@types/qs": "^6.9.4",
+    "hammerjs": "^2.0.8",
     "jquery": "^3.5.1",
+    "plyr": "^3.6.2",
     "qs": "^6.9.4"
   },
   "devDependencies": {

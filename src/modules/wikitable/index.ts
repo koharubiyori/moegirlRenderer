@@ -2,5 +2,5 @@ import './index.scss'
 
 // 维基表格
 export default () => {
-  // $('.wikitable').wrap('<div class="wikitableWrapper">')  
+  $('.wikitable:not(.bilibili-video-container)').wrap('<div class="wikitableWrapper">')
 }

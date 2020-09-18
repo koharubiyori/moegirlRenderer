@@ -2,7 +2,8 @@
   float: none !important;
   margin: 10px auto;
 
-  tr > td:not(:only-child):nth-child(1) {
+  // 排除Album Infobox/Chronology模板
+  > tbody > tr > td:not(:only-child):nth-child(1):not([style="width: 33%; text-align:center;"]) {
     background-color: useComputedColorVars('headerColor', 0.3);
   }
 }

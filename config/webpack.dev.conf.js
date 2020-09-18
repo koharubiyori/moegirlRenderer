@@ -31,11 +31,11 @@ module.exports = merge(baseConfig, {
           ...commonProxyHeaders
         }
       },
-      '/img': {
+      '/common': {
         target: 'https://img.moegirl.org.cn/common/',
         changeOrigin: true,
         pathRewrite: {
-          '^/img': ''
+          '^/common': ''
         },
         headers: {
           ...commonProxyHeaders,

@@ -3,6 +3,9 @@ import './index.scss'
 // 标签栏
 export default () => {
   $('.Tabs').each((index, tabs) => {
+    const activeBgColor = tabs.dataset.labelBackgroundColor
+    activeBgColor && $(tabs).css('--activeBgColor', activeBgColor)
+    
     const tabLabels = $(tabs).find('> .Tab > .TabLabelText')
     const tabContents = $(tabs).find('> .Tab > .TabContentText')
     $(tabs).empty()

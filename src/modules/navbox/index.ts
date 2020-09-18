@@ -28,7 +28,9 @@ export default () => {
       if ($(this).find('> th').length) {
         $(this).removeClass('navboxBlock')
       } else {
-        const bgColor = getComputedStyle($(this).find('.navbox-group').get(0)).backgroundColor
+        const titleBar = $(this).find('.navbox-group').get(0)
+        if (!titleBar) { return }
+        const bgColor = getComputedStyle(titleBar).backgroundColor
         setCssColorByComputedColor(bgColor, 'groupColor', this)
 
         const navboxCollapseButton = $('<div class="navboxCollapseButton">').text('+')

@@ -9,7 +9,7 @@ module.exports = [
   
   {
     test: /\.(c|sc)ss$/,
-    include: path.resolve(__dirname, '../src'),
+    // include: path.resolve(__dirname, '../src'),
     use: [
       'style-loader',
       'css-loader', 
