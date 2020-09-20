@@ -32,6 +32,10 @@ declare interface Moegirl {
       onLongPress(payload: __MoegirlConfig.BiliPlayer['videoData']): void
     }
 
+    nightTheme: {
+      $enabled: boolean
+    }
+
     // 功能性模块
     request: {  // 注入一个请求器，用于跨域请求
       callbacks: {  // 保存所有回调，用于将响应的数据传回webView

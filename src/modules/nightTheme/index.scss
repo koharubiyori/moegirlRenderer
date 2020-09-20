@@ -1,0 +1,181 @@
+// 用这个标记夜晚样式的style标签，用于拿jquery找到这个标签
+nightThemeStyleTagMark {
+  --nightThemeStyleTagMark: 1;
+}
+
+$primary: #4E4E4E;
+$accent: #0DBC79;
+$danger: #D96768;
+$text: #BFBFBF;
+$link: darken($accent, 10%);
+$disabled: #D0D0D0;
+$placeholder: #797979;
+$background: #3A3A3B;
+$surface: #4E4E4E;
+
+$dark: #076642;
+$light: #0B9560;
+$onSurface: #BFBFBF;
+$lightBg: #797979;
+
+body {
+  background-color: $background;
+  color: $text;
+}
+
+a {
+  color: $link;
+  text-decoration: none;
+
+  .new {
+    color: $danger;
+  }
+}
+
+.decoration-underlink a {
+  color: $link !important;
+  border-bottom-color: $link !important;
+}
+
+.mainpage-title {
+  background-color: $placeholder;
+  color: $text;
+  border-radius: 5px;
+}
+
+.mainpage-box {
+  box-shadow: none;
+  background-color: $surface;
+}
+
+table.infobox {
+  background-color: transparent !important;
+  
+  > tbody > tr:first-child > td,
+  th[colspan="3"] {
+    background-color: $primary !important;
+    color: $text !important;
+  }
+
+  td[width="80px"], td[style^="min-width: 80px;"] {
+    background-color: $primary;
+  }
+}
+
+.heimu {
+  color: black;
+
+  &.heimu-show {
+    color: $text;
+  
+    a {
+      color: $link;
+    }
+  }
+}
+
+.Tabs {
+  .Tabs-active {
+    position: relative;
+    background-color: transparent !important;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--activeBgColor, var(--color-light));
+      z-index: -1;
+      opacity: 0.5;
+    }
+  }
+}
+
+
+.wikitable {
+  background-color: $primary;
+  color: $text;
+
+  > tr > th,
+  * > tr > th {
+    background-color: darken($color: $placeholder, $amount: 30%);
+  }
+
+  tr > th,
+  > tr > td,
+  * > tr > th,
+  * > tr > td {
+    border: '1px #a2a9b1 solid';
+    background-color: #3A3A3B;
+  }
+}
+
+.navbox, .navbox .navbox-subgroup {
+  background-color: transparent !important;
+}
+
+.navbox {
+  a {
+    color: $link !important;
+    -webkit-text-fill-color: $link !important
+  }
+
+  .navboxBlock {
+    border-left-color: $primary !important;
+  }
+
+  .navbox-title * {
+    color: $text !important;
+    -webkit-text-fill-color: $text !important
+  }
+
+  .mw-collapsible.navbox-subgroup {
+    background-color: $background !important;
+    color: $text !important;
+    -webkit-text-fill-color: $text !important;
+  }
+
+  .navbox-title, table.navbox th {
+    background-color: $primary !important;
+    background-image: none !important;
+    color: $text !important;
+    -webkit-text-fill-color: $text !important
+  }
+
+  .navbox-abovebelow,
+  .navbox-group,
+  .navbox-title {
+    background-color: $primary !important;
+    color: $text !important;
+    -webkit-text-fill-color: $text !important;
+  }
+
+  .navbox-even {
+    background-color: $background !important;
+    color: $text !important;
+    -webkit-text-fill-color: $text !important;
+  }
+
+  .infotemplatebox {
+    tbody > tr:nth-child(2) > td, tbody > tr:nth-last-child(2) > th {
+      background-color: $primary !important;
+    }
+  }
+}
+
+.mw-collapsible.wikitable {
+  > tbody > tr:first-child > th {
+    background-color: $primary;
+  }
+
+  .collapseBtn:not(foo) {
+    color: $link;
+  }
+}
+
+.categoryBox {
+  background-color: $primary;
+  color: $text;
+}

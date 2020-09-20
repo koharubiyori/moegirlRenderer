@@ -67,7 +67,7 @@
     .mainpage-title {
       color: white;
       font-size: 20px;
-      background: var(--color-accent);
+      background: var(--color-primary);
       text-align: center;
       line-height: 30px;
       text-shadow: 1px 1px 1px #666;
@@ -88,8 +88,8 @@
     .mainpage-box:first-child {
       .mainpage-content {
         .decoration-underlink a {
-          color: var(--color-accent);
-          border-bottom-color: var(--color-accent);
+          color: var(--color-primary);
+          border-bottom-color: var(--color-primary);
         }
       }
     }

@@ -33,6 +33,7 @@ window.moegirl = {
           .attr('srcset', replaceToProxyUrl(srcset))
       })
 
+    moegirl.config.nightTheme.$enabled = true
     moegirl.config.link.onClick = console.log
     moegirl.config.addCategories.categories = ['aaa', 'vvv']
     moegirl.init()

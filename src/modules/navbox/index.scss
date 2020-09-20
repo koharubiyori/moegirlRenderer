@@ -2,6 +2,7 @@
 .navbox {
   border: 1px var(--color-border) solid;
   padding: 2px;
+  width: 100%;
 }
 
 .navbox, .navbox .navbox-subgroup {
@@ -12,6 +13,12 @@
     table-layout: auto;
     border: none;
     margin: 0 auto;
+  }
+
+  div[style="float:left; width:6em;text-align:left;"] {
+    a > span {
+      background-color: transparent !important;
+    }
   }
 
   // 增加权重，覆盖mw-collapsible的样式
@@ -25,8 +32,11 @@
     display: inline-table;
     box-sizing: border-box;
     border-left-style: solid;
-    border-left-color: useComputedColorVars('groupColor') !important;
     margin: 5px;
+    
+    &:not(foo):not(foo):not(foo):not(foo):not(foo) {
+      border-left-color: useComputedColorVars('groupColor');
+    }
 
     &.navboxBlock-show {
       width: calc(100% - 5px);
