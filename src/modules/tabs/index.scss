@@ -9,9 +9,10 @@
 
     .TabLabelText {
       padding: 5px 10px;
+      vertical-align: middle;
       
       &.Tabs-active {
-        background-color: var(--activeBgColor, --color-light);
+        background-color: var(--activeBgColor, var(--color-light));
       }
     }
   }

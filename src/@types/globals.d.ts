@@ -33,7 +33,7 @@ declare interface Moegirl {
     }
 
     // 功能性模块
-    request: {
+    request: {  // 注入一个请求器，用于跨域请求
       callbacks: {  // 保存所有回调，用于将响应的数据传回webView
         [callbackId: number]: {
           resolve(value: any): void
@@ -45,8 +45,19 @@ declare interface Moegirl {
       onRequested(requestData: __MoegirlConfig.Request['requestData']): void 
     }
 
-    vibrate: {
+    vibrate: {  // 振动控制器
       onCalled(): void
+    }
+
+    // 在页面底部添加版权信息
+    addCopyright: {
+      content: string
+    }
+
+    // 在页面底部添加分类
+    addCategories: {
+      categories: string[]  // 分类数据
+      text: string  // 分类文字的国际化
     }
   }
 }

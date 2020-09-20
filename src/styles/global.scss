@@ -7,6 +7,10 @@ body {
   overflow-y: auto;
 }
 
+h1, h2 {
+  font-weight: initial;
+}
+
 a {
   color: var(--color-accent);
   text-decoration: none;
@@ -20,6 +24,10 @@ a {
 
 ul, ol {
   padding-left: 20px;
+
+  li {
+    word-break: break-all;
+  }
 }
 
 

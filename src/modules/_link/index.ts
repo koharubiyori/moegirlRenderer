@@ -46,7 +46,7 @@ const { config, watchChange } = createModuleConfig('link', {
 })
 
 // 链接处理
-export default () => {
+export default function link() {
   const triggerOnClick = <T extends keyof LinkDataMaps>(type: T, data: LinkDataMaps[T]) => config.onClick({ type, data })
   
   $('a').on('click', function(e) {

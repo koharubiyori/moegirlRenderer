@@ -10,12 +10,13 @@ window.moegirl = {
   init: () => {
     modules.forEach(item => item())
     ;(window.moegirl as any).initialized = true
+    console.log('moegirlRenderer:initialized')
   }
 }
 
 ;(async () => {
   if (process.env.NODE_ENV === 'development') {
-    const articleName = location.search.replace(/^\?/, '') || 'Mainpage'
+    const articleName = location.search.replace(/^\?/, '') || '点兔'
     const articleHtml = await loadArticle(decodeURIComponent(articleName))
 
     // 萌百的共享站有盗链检测，这里全部走代理，去掉referer
@@ -33,6 +34,7 @@ window.moegirl = {
       })
 
     moegirl.config.link.onClick = console.log
+    moegirl.config.addCategories.categories = ['aaa', 'vvv']
     moegirl.init()
   }
 })()

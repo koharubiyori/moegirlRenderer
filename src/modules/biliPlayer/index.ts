@@ -9,7 +9,7 @@ export interface BiliVideoData {
   page: number
 }
 
-const { config, watchChange } = createModuleConfig('biliPlayer', {
+const { config } = createModuleConfig('biliPlayer', {
   texts: {
     loading: '标题获取中',
     removed: '视频又挂了',
@@ -17,10 +17,6 @@ const { config, watchChange } = createModuleConfig('biliPlayer', {
   },
   onClick: () => {},
   onLongPress: () => {}
-})
-
-watchChange('$texts', value => {
-
 })
 
 // b站播放器
