@@ -59,6 +59,10 @@ body.nightTheme {
   
   .heimu {
     color: black;
+
+    a {
+      color: black;
+    }
   
     &.heimu-show {
       color: $text;

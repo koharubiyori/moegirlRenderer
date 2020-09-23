@@ -11,6 +11,10 @@ export default () => {
     }
   })
 
+  $('.thumb')
+    .filter((index, item) => $(item).find('.thumbcaption').text().trim() === '')
+    .addClass('thumb-noNote')
+
   // 干掉gallery默认样式
   $('ul.gallery *').each(function () {
     $(this).removeAttr('style')
