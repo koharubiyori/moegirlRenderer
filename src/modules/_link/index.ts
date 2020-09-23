@@ -1,11 +1,13 @@
+import './index.scss'
 import createModuleConfig from '~/utils/createModuleConfig'
 import qs from 'qs'
+import animateScrollTo from 'animated-scroll-to'
 
 export interface LinkDataMaps {
   article: {
     pageName: string
     displayTitle: string
-    author: string
+    anchor: string
   }
   img: {
     name: string
@@ -13,8 +15,9 @@ export interface LinkDataMaps {
   }
   note: {
     id: string
+    html: string
   }
-  author: {
+  anchor: {
     id: string
   }
   notExist: {
@@ -34,6 +37,9 @@ export interface LinkDataMaps {
   external: {
     url: string
   }
+  externalImg: {
+    url: string
+  }
   unparsed: {
     [key: string]: string
   }
@@ -41,8 +47,14 @@ export interface LinkDataMaps {
 
 const moegirlDomainRegex = /^https:\/\/zh\.moegirl\.org\.cn/
 
-const { config, watchChange } = createModuleConfig('link', {
+const { config, addMethod } = createModuleConfig('link', {
   onClick: () => {}
+})
+
+addMethod('gotoAnchor', (anchorName: string, offset = 0) => {
+  animateScrollTo($('#' + anchorName).offset()!.top + offset, {
+    maxDuration: 400
+  })
 })
 
 // 链接处理
@@ -60,7 +72,7 @@ export default function link() {
       
       // 判断是请求index.php的链接还是条目名的链接
       if (!/^\/index\.php\?/.test(link)) {
-        const [pageName, author] = link.replace(/^\//, '').split('#')
+        const [pageName, anchor] = link.replace(/^\//, '').split('#')
 
         // 图片
         if (/^File:/.test(pageName)) {
@@ -70,12 +82,13 @@ export default function link() {
           })
         }
 
-        if (pageName === '' && /^cite_note-/.test(author)) {
-          return triggerOnClick('note', { id: author })
+        if (pageName === '' && /^cite_note-/.test(anchor)) {
+          const html = $('#' + anchor).find('.reference-text').html()
+          return triggerOnClick('note', { id: anchor, html })
         }
 
-        if (pageName === '' && author) {
-          return triggerOnClick('author', { id: author })
+        if (pageName === '' && anchor) {
+          return triggerOnClick('anchor', { id: anchor })
         }
 
         if ($(this).hasClass('new')) {
@@ -90,7 +103,7 @@ export default function link() {
           $(this).attr('title') ||
           $(this).find('> img').eq(0).attr('alt')
         )!
-        return triggerOnClick('article', { pageName, displayTitle, author })
+        return triggerOnClick('article', { pageName, displayTitle, anchor })
       } else {
         const params: any = qs.parse(link.replace(/^\/index\.php\?/, ''))
 
@@ -116,5 +129,10 @@ export default function link() {
     } else {
       triggerOnClick('external', { url: link })
     }
+  })
+
+  // 给外链图片添加点击显示大图
+  $('img:not([data-file-width][data-file-height])').on('click', function() {
+    triggerOnClick('externalImg', { url: $(this).attr('src')! })
   })
 }

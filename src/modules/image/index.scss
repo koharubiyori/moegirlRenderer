@@ -21,3 +21,37 @@
     }
   }
 }
+
+ul.gallery {
+  overflow: hidden;
+  padding: 0;
+  text-align: center;
+  font-size: 0;
+
+  .thumb {
+    border: none;
+  }
+
+  li {
+    list-style: none;
+    display: inline-block;
+    vertical-align: top;
+    width: 90px;
+    margin: 5px;
+    font-size: 14px;
+
+    &::before {
+      display: none
+    }
+
+    img {
+      width: 90px !important;
+      object-fit: cover;
+    }
+
+    p {
+      margin: 0;
+      text-align: center;
+    }
+  }
+}

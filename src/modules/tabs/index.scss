@@ -9,7 +9,8 @@
 
     .TabLabelText {
       padding: 5px 10px;
-      vertical-align: middle;
+      display: flex;
+      align-items: center;
       
       &.Tabs-active {
         background-color: var(--activeBgColor, var(--color-light));

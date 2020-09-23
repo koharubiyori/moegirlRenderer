@@ -1,10 +1,11 @@
 // 创建模块配置
-export interface ModuleConfig<T> {
-  config: T
+export interface ModuleConfig<ModuleName extends keyof Moegirl['config']> {
+  config: Moegirl['config'][ModuleName]
   watchChange<T = any>(propPath: string, handler: (value: T) => void): void
+  addMethod(methodName: string, fn: Function): void
 }
 
-export default function createModuleConfig<T extends keyof Moegirl['config']>(moduleName: T, initialConfig: Moegirl['config'][T]): ModuleConfig<typeof initialConfig> {
+export default function createModuleConfig<T extends keyof Moegirl['config']>(moduleName: T, initialConfig: Moegirl['config'][T]): ModuleConfig<T> {
   if (!window.moegirl) window.moegirl = {} as any
   if (!window.moegirl!.config) window.moegirl!.config = {} as any
 
@@ -34,10 +35,16 @@ export default function createModuleConfig<T extends keyof Moegirl['config']>(mo
   })(initialConfig, [])
 
   const watchChange = <T = any>(propPath: string, handler: (value: T) => void) => propertyProxyHandlers[propPath as any] = handler
+  const addMethod = (methodName: string, fn: Function) => {
+    if (!window.moegirl.method) window.moegirl.method = {} as any
+    if (!(window.moegirl.method as any)[moduleName]) (window.moegirl.method as any)[moduleName] = {} as any
+    ;(window.moegirl.method as any)[moduleName][methodName] = fn
+  }
 
   window.moegirl!.config[moduleName] = configProxy
   return { 
     config: configProxy,
-    watchChange
+    watchChange,
+    addMethod
   }
 }

@@ -10,4 +10,9 @@ export default () => {
       $(this).attr({ width: maxWidth + 'px', height: '' })
     }
   })
+
+  // 干掉gallery默认样式
+  $('ul.gallery *').each(function () {
+    $(this).removeAttr('style')
+  })
 }

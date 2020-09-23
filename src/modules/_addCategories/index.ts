@@ -8,8 +8,9 @@ const { config } = createModuleConfig('addCategories', {
 
 // 添加分类
 export default function addCategories() {
+  if (config.categories.length == 0) { return }
+  
   let title = $(`<h2>${config.text}</h2>`)
-  console.log(config)
   let categories = $('<p>').html(
     config.categories.map(categoryName => `
       <a href="/${config.text}:${categoryName}">

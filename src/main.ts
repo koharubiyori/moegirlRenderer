@@ -5,7 +5,8 @@ import config from '../config.js'
 import modules from './modules'
 
 window.moegirl = {
-  config: window.moegirl.config, 
+  ...window.moegirl,
+  data: {},
   initialized: false,
   init: () => {
     modules.forEach(item => item())
@@ -16,7 +17,7 @@ window.moegirl = {
 
 ;(async () => {
   if (process.env.NODE_ENV === 'development') {
-    const articleName = location.search.replace(/^\?/, '') || '点兔'
+    const articleName = location.search.replace(/^\?/, '') || 'Mainpage'
     const articleHtml = await loadArticle(decodeURIComponent(articleName))
 
     // 萌百的共享站有盗链检测，这里全部走代理，去掉referer
@@ -33,9 +34,9 @@ window.moegirl = {
           .attr('srcset', replaceToProxyUrl(srcset))
       })
 
+    moegirl.config.link.onClick = (payload) => location.href = `http://localhost:8900?${payload.data.pageName}`
+    moegirl.config.request.onRequested = (data) => console.log('req', data)
     moegirl.config.nightTheme.$enabled = true
-    moegirl.config.link.onClick = console.log
-    moegirl.config.addCategories.categories = ['aaa', 'vvv']
     moegirl.init()
   }
 })()

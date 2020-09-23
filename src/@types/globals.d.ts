@@ -6,6 +6,16 @@ interface Window {
 declare interface Moegirl {
   init(): void
   readonly initialized: boolean
+  data: {
+    // 可以设置data里的字段，一些模块会根据这里的数据做判断
+    pageName?: string
+  }
+  method: {
+    // 一些模块会提供方法
+    link: {
+      gotoAnchor(anchorName: string, offset?: number): void
+    }
+  }
   config: {
     // 在此声明配置的类型并添加注释，可响应属性使用$开头
     heimu: {
@@ -55,6 +65,7 @@ declare interface Moegirl {
 
     // 在页面底部添加版权信息
     addCopyright: {
+      enabled: boolean
       content: string
     }
 

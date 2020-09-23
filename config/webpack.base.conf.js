@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const webpackRules = require('./webpack.rules')
 
 const devMode = process.env.NODE_ENV === 'development'
@@ -26,6 +27,11 @@ module.exports = {
   },
 
   plugins: [    
+    new MiniCssExtractPlugin({
+      filename: devMode ? '[name].css' : '[name].css',
+      chunkFilename: devMode ? '[id].css' : '[id].css',
+    }),
+    
     // 创建html文件
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/index.html'),

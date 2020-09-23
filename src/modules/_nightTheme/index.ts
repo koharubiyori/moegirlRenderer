@@ -1,3 +1,4 @@
+import './index.scss'
 import createModuleConfig from '~/utils/createModuleConfig'
 
 const { config, watchChange } = createModuleConfig('nightTheme', {
@@ -9,12 +10,10 @@ watchChange<boolean>('$enabled', value => {
 })
 
 function toggleStyle(enable: boolean) {
-  const styleTag = $('style:contains("nightThemeStyleTagMark")').eq(0)
-  styleTag.attr('type', enable ? 'text/css' : 'text/plain') // 给style标签设置type="text/plain"会使样式失效
+  $('body')[enable ? 'addClass' : 'removeClass']('nightTheme')
 }
 
 // 夜晚模式样式
-export default () => {
-  require('./index.scss')
+export default function nightTheme() {
   toggleStyle(config.$enabled)
 }

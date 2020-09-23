@@ -1,0 +1,14 @@
+a {
+  color: #0b0080;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.2s;
+
+  &:active {
+    opacity: 0.3;
+  }
+
+  &.new {
+    color: #ba0000;
+  }
+}

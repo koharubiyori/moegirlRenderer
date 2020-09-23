@@ -67,17 +67,11 @@
     .mainpage-title {
       color: white;
       font-size: 20px;
-      background: var(--color-primary);
+      background-color: var(--color-primary);
       text-align: center;
       line-height: 30px;
       text-shadow: 1px 1px 1px #666;
     }
-  }
-
-  .mainpage-box {
-    padding: 5px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 2px #eee, 0 2px 5px #ccc;
   }
 
   .mainpage-1stcontent .gallery.mw-gallery-packed-hover img {

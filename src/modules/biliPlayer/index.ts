@@ -5,6 +5,7 @@ import vibrate from '../_vibrate'
 import request from '../_request'
 
 export interface BiliVideoData {
+  type: 'av' | 'bv'
   videoId: string
   page: number
 }
@@ -22,14 +23,17 @@ const { config } = createModuleConfig('biliPlayer', {
 // b站播放器
 export default () => {
   $('.wikitable.bilibili-video-container').each(function () {
-    const videoId = $(this).data('id').toString().replace('av', '')
+    let videoId = $(this).data('id').toString()
     const page = $(this).data('page')
 
+    const isAvId = /^([aA][vV]|)\d+$/.test(videoId)
+    videoId = videoId.replace(/^([aA][vV]|[bB][vV])/, '')
+
     const playerButton = $(`<div class="bilibili-video-title">${config.texts.loading}</div>`)
-    playerButton.on('click', () => config.onClick({ videoId, page }))
+    playerButton.on('click', () => config.onClick({ type: isAvId ? 'av' : 'bv', videoId, page }))
     new Hammer(playerButton.get(0)).on('press', () => {
       vibrate()
-      config.onLongPress({ videoId, page })
+      config.onLongPress({ type: isAvId ? 'av' : 'bv', videoId, page })
     })
 
     const title = $(this).data('title')
@@ -39,15 +43,20 @@ export default () => {
       request({
         method: 'get',
         url: 'https://api.bilibili.com/x/web-interface/view',
-        data: { aid: videoId },
+        data: { 
+          [isAvId ? 'aid' : 'bvid']: videoId 
+        },
       })
-        .then(data => {
-          const res = data.data
+        .then(res => {
           if (res.code !== 0) {
             playerButton.text(res.code === -404 ? config.texts.removed : config.texts.netErr)
           } else {
             playerButton.text(res.data.title)
           }
+        })
+        .catch(e => {
+          console.log(e)
+          playerButton.text(config.texts.netErr)
         })
     }
 

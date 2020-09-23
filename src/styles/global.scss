@@ -11,15 +11,8 @@ h1, h2 {
   font-weight: initial;
 }
 
-a {
-  color: var(--color-primary);
-  text-decoration: none;
-  -webkit-tap-highlight-color: transparent;
-  transition: opacity 0.2s;
-
-  &:active {
-    opacity: 0.3;
-  }
+.mw-inputbox-centered {
+  display: none;
 }
 
 ul, ol {
@@ -30,8 +23,17 @@ ul, ol {
   }
 }
 
-
 // 隐藏ruby用于复制时带上的括号
 .template-ruby-hidden {
   display: none;
+}
+
+// 匹配老旧的信息模板
+table[border="1"][cellpadding="2"][cellspacing="0"][style^="float: right; width: 260px;"] {
+  float: none !important;
+  margin: 0 auto;
+}
+
+.infotemplatebox {
+  margin-top: 10px;
 }
