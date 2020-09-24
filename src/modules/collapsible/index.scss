@@ -1,5 +1,5 @@
 // 注意：修改collapsible的样式将影响navbox
-.mw-collapsible {
+.mw-collapsible:not(foo) {
   background-color: var(--color-background);
   margin: 1em 0;
   border: 1px var(--color-border) solid;

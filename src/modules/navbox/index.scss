@@ -53,6 +53,9 @@
       padding: 3px 5px !important;
       box-sizing: border-box;
       background-color: #DAF4DA;
+      word-break: break-all;
+      white-space: nowrap;
+      width: auto !important;
 
       > div:first-child {
         display: inline-block;

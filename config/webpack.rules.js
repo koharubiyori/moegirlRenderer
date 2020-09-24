@@ -24,7 +24,6 @@ module.exports = [
           }
         },
       'css-loader', 
-      'sass-loader', 
       {
         loader: 'postcss-loader',
         options: {
@@ -33,6 +32,7 @@ module.exports = [
           ]
         }
       },
+      'sass-loader',
       {
         loader: 'sass-resources-loader',
         options: {
