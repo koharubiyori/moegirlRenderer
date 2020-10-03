@@ -11,7 +11,7 @@ declare interface Moegirl {
     pageName?: string
   }
   method: {
-    // 一些模块会提供方法
+    // 一些模块会向外提供方法
     link: {
       gotoAnchor(anchorName: string, offset?: number): void
     }

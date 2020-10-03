@@ -1,6 +1,6 @@
 ## MoegirlMobileRenderer
 
-该项目为[萌娘百科](https://zh.moegirl.org.cn/Mainpage)的移动端渲染器，用于开发萌百移动客户端时解决条目渲染的问题。
+该项目为[萌娘百科](https://zh.moegirl.org.cn/Mainpage)的移动端渲染与排版引擎。
 
 ## 使用
 
@@ -13,7 +13,7 @@ moegirl.init()
 
 可以进行配置，初始配置请在执行`moegirl.init()`之前进行。
 
-所有配置都是可选参数，在`moegirl.config[moduleName]`上进行配置。有些选项是可响应配置(属性以`$`开头)，即执行过`moegirl.init()`后，修改配置项还会触发相应的动作。
+所有配置都是可选参数，在`moegirl.config[moduleName]`上进行配置。有些选项是可响应配置(属性以`$`开头)，即执行过`moegirl.init()`后，修改配置项还会触发一些相应的动作。
 
 配置请参考：src/@types/globals.d.ts
 
@@ -21,7 +21,7 @@ moegirl.init()
 
 ## 定制
 
-该渲染器不提供扩展功能，因为大多数移动端应用环境向webView注入的js代码都很容易写错，不适合注入大段代码。请直接clone或fork本项目，添加代码后编译，也欢迎大家向该项目贡献代码。
+该渲染器不提供扩展功能，因为大多数移动端应用环境向webView注入的js代码都很容易写错，不适合注入大段代码。请直接clone或fork本项目，添加代码后编译，或提出Pull request。
 
 ### 开发配置
 
