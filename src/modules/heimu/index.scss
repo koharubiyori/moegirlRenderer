@@ -17,3 +17,9 @@
     color: black;
   }
 }
+
+// 消除无参数文字模糊刮刮乐
+span[style="color:rgba(0,0,0,0); text-shadow:grey 0px 0px 10px;"] {
+  text-shadow: initial !important;
+  color: initial !important;
+}
