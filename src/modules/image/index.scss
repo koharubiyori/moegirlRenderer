@@ -44,6 +44,7 @@ ul.gallery {
 
   .thumb {
     border: none;
+    background-color: transparent;
   }
 
   li {
@@ -66,6 +67,28 @@ ul.gallery {
     p {
       margin: 0;
       text-align: center;
+    }
+  }
+}
+
+.gallery-mod {
+  width: max-content;
+  
+  .gallery-mod-box {
+    
+    .thumb:not(foo):not(foo) {
+      background-color: transparent;
+
+      img {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .gallery-mod-text {
+
+    .caption:not(foo) {
+      text-align: center;  
     }
   }
 }

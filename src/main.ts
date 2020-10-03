@@ -36,7 +36,6 @@ window.moegirl = {
 
     moegirl.config.link.onClick = (payload) => location.href = `http://localhost:8900?${payload.data.pageName}`
     moegirl.config.request.onRequested = (data) => console.log('req', data)
-    moegirl.config.nightTheme.$enabled = true
     moegirl.init()
   }
 })()

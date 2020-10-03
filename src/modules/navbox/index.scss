@@ -3,6 +3,11 @@
   border: 1px var(--color-border) solid;
   padding: 2px;
   width: 100%;
+
+  // 隐藏navbox的右侧配图
+  > tbody > tr:first-child > td:first-child > .tableWrapper:first-child > .mw-collapsible:first-child > tbody > tr:nth-child(2) > td:last-child > a:only-child > img:only-child {
+    display: none;
+  }
 }
 
 .navbox, .navbox .navbox-subgroup {
@@ -50,12 +55,15 @@
 
     > .navbox-group {
       text-align: center;
-      padding: 3px 5px !important;
+      padding: 5px 25px 5px 5px !important;
       box-sizing: border-box;
       background-color: #DAF4DA;
       word-break: break-all;
       white-space: nowrap;
       width: auto !important;
+      line-height: 20px;
+      position: relative;
+      white-space: normal;
 
       > div:first-child {
         display: inline-block;
@@ -74,11 +82,11 @@
     .navboxCollapseButton {
       padding: 0 5px;
       font-size: 16px;
-      transform: scale(1.3);
       font-weight: bold;
-      float: right;
-      position: relative;
-      top: -1px;
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      transform: translateY(-50%) scale(1.5);
     }
   }
 
@@ -94,5 +102,18 @@
   .navbox-subgroup {
     border: none;
     margin: 0;
+  }
+
+  // 匹配以时段归纳的日本动漫导航模板-title
+  div[style="text-align:center;line-height:10pt;"], div[style="text-align:center; line-height:10pt"] {
+    line-height: initial !important;
+
+    > div[style="word-spacing: 100px"] {
+      
+      > small {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
   }
 }

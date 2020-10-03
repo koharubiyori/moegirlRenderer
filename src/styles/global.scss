@@ -23,6 +23,15 @@ ul, ol {
   }
 }
 
+pre {
+  color: #000;
+  background-color: #f8f9fa;
+  border: 1px solid #eaecf0;
+  padding: 1em;
+  word-break: break-all;
+  font-family: 'Consolas';
+}
+
 // 隐藏ruby用于复制时带上的括号
 .template-ruby-hidden {
   display: none;
@@ -31,7 +40,7 @@ ul, ol {
 // 匹配老旧的信息模板
 table[border="1"][cellpadding="2"][cellspacing="0"][style^="float: right; width: 260px;"] {
   float: none !important;
-  margin: 0 auto;
+  margin: 10px auto 0 auto !important;
 }
 
 .infotemplatebox {
