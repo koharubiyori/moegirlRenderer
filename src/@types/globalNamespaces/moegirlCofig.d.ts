@@ -1,5 +1,5 @@
 import { BiliVideoData } from '~/modules/biliPlayer'
-import { LinkDataMaps } from '~/modules/_link'
+import { LinkDataMaps } from '~/modules/@after/modules/link'
 import { RequestData } from '~/modules/_request'
 
 
