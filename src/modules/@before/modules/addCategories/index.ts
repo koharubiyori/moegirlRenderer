@@ -19,5 +19,5 @@ export default function addCategories() {
     `).join('')
   )
   
-  $('body').append(title, categories)
+  $('.mw-parser-output').append(title, categories)
 }

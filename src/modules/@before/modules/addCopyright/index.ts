@@ -11,7 +11,7 @@ export default function addCopyright() {
   if (moegirl.data.pageName === 'Mainpage') { return }
   if (!config.enabled) { return }
   
-  $('body').append(`
+  $('.mw-parser-output').append(`
     <div class="copyright">
       <div class="divider"></div>
       <p>${config.content}</p>

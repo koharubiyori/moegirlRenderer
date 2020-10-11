@@ -74,6 +74,12 @@ declare interface Moegirl {
       categories: string[]  // 分类数据
       text: string  // 分类文字的国际化
     }
+
+    // 当页面高度发生变化时触发回调，默认不启用
+    pageHeightObserver: {
+      enabled: boolean
+      onResize(height: number): void
+    }
   }
 }
 
