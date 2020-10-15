@@ -36,6 +36,10 @@
 
         .thumb {
           border: none;
+
+          a {
+            display: block;
+          }
       
           img {
             width: 100%;

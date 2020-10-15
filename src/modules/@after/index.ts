@@ -1,11 +1,13 @@
 import link from './modules/link'
-import pageHeightObserver from './modules/pageHeightObserver'
+import hostScrollMode from './modules/hostScrollMode'
+import dataCollector from './modules/dataCollector'
 
 // 置于最后的操作
 export default function after() {
   ;[
     link,
-    pageHeightObserver
+    hostScrollMode,
+    dataCollector
   ].forEach(item => item())
   
   $('#toc').remove()  // 移除目录  

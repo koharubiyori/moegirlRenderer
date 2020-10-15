@@ -1,6 +1,7 @@
 import { BiliVideoData } from '~/modules/biliPlayer'
 import { LinkDataMaps } from '~/modules/@after/modules/link'
 import { RequestData } from '~/modules/_request'
+import { ContentData } from '~/modules/@after/modules/dataCollector'
 
 
 export = MoegirlConfig
@@ -18,5 +19,9 @@ declare namespace MoegirlConfig {
 
   interface Request {
     requestData: RequestData
+  }
+
+  interface DataSelector {
+    contentData: ContentData
   }
 }

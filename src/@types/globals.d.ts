@@ -75,10 +75,15 @@ declare interface Moegirl {
       text: string  // 分类文字的国际化
     }
 
-    // 当页面高度发生变化时触发回调，默认不启用
-    pageHeightObserver: {
+    // 宿主滚动模式，取消webview中的滚动，并提供一个内容高度变化时的监听函数
+    hostScrollMode: {
       enabled: boolean
       onResize(height: number): void
+    }
+
+    // 数据收集器，通过分析dom传回数据
+    dataCollector: {
+      contentsData(data: __MoegirlConfig.DataSelector['contentData'][]): void
     }
   }
 }

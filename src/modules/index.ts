@@ -7,7 +7,6 @@ const modules: Function[] = requireCtx.keys()
   .filter((key: string) => /^\.\/[^_@][^\/]+?\/index\.[tj]s$/.test(key))
   .map((key: string) => requireCtx(key).default)
 
-console.log(modules)
 modules.unshift(before)
 modules.push(after)
 

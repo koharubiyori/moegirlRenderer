@@ -13,6 +13,7 @@ export default function createModuleConfig<T extends keyof Moegirl['config']>(mo
 
   const configProxy: typeof initialConfig = (function makeProxy(config: any, parentNames: (string | number)[]) {
     Object.keys(config).forEach(item => {
+      if ([null, undefined].includes(config[item])) { return }
       if ([Object, Array].includes(config[item].constructor)) {
         config[item] = makeProxy(config[item], parentNames.concat([item]))
       }
