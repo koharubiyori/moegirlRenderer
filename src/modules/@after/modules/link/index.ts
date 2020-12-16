@@ -110,7 +110,7 @@ export default function link() {
         // 编辑页
         if (params.action === 'edit') {
           if ($(this).hasClass('new')) {
-            return triggerOnClick('notExistEdit', { pageName: params.title })
+            return triggerOnClick('notExist', { pageName: params.title })
           }
           
           return triggerOnClick('edit', {

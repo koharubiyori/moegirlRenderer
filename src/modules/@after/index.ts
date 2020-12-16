@@ -11,5 +11,11 @@ export default function after() {
   ].forEach(item => item())
   
   $('#toc').remove()  // 移除目录  
-  $(':root').css('--max-content-width', $('.mw-parser-output').width()! + 'px') // 添加一个最大内容宽度变量
+
+
+  $(':root').css('--max-content-width', $('.mw-parser-output').width()! + 'px')
+  // 发现在手机端有获取到0px的情况，这里做个延时再赋值
+  setTimeout(() => {
+    $(':root').css('--max-content-width', $('.mw-parser-output').width()! + 'px') // 添加一个最大内容宽度变量
+  }, 3000)
 }
