@@ -1,6 +1,7 @@
 interface Window {
   $: JQueryStatic
   moegirl: Moegirl
+  RLQ: Function[]
 }
 
 declare interface Moegirl {

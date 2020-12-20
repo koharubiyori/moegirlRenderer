@@ -5,7 +5,7 @@ $text: #BFBFBF;
 $link: #0DBC79;
 $disabled: #D0D0D0;
 $placeholder: #797979;
-$background: #3A3A3B;
+$background: #252526;
 $surface: #4E4E4E;
 
 $dark: #076642;
@@ -32,14 +32,14 @@ body.nightTheme {
   }
   
   .mainpage-title {
-    background-color: $placeholder !important;
+    background-color: #555 !important;
     color: $text;
     border-radius: 5px;
   }
   
   .mainpage-box {
     box-shadow: none !important;
-    background-color: $surface;
+    background-color: #333;
     border-radius: 5px;
   }
   
@@ -74,7 +74,7 @@ body.nightTheme {
   }
   
   .Tabs {
-    .Tabs-active {
+    .TabLabelText.Tabs-active {
       position: relative;
       background-color: transparent !important;
       
@@ -87,7 +87,7 @@ body.nightTheme {
         bottom: 0;
         background: var(--activeBgColor, var(--color-light));
         z-index: -1;
-        opacity: 0.5;
+        opacity: 0.3;
       }
     }
   }
@@ -107,7 +107,7 @@ body.nightTheme {
     * > tr > th,
     * > tr > td {
       border: 1px #a2a9b1 solid;
-      background-color: #3A3A3B;
+      background-color: #252526;
     }
   }
   

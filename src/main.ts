@@ -12,6 +12,8 @@ window.moegirl = {
     modules.forEach(item => item())
     ;(window.moegirl as any).initialized = true
     console.log('moegirlRenderer:initialized')
+
+    window.RLQ = [] // 有的页面会包含脚本，向RLQ这个全局变量push函数，为了push时防止报错，添加这个
   }
 }
 
