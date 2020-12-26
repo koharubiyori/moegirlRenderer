@@ -127,7 +127,8 @@ body.nightTheme {
   
     .navbox-title * {
       color: $text !important;
-      -webkit-text-fill-color: $text !important
+      -webkit-text-fill-color: $text !important;
+      background-color: transparent !important;
     }
 
     .navbox-list {
@@ -168,12 +169,12 @@ body.nightTheme {
     }
   }
   
-  .mw-collapsible.wikitable {
+  .mw-collapsible {
     > tbody > tr:first-child > th {
       background-color: $primary;
     }
   
-    .collapseBtn:not(foo) {
+    .collapseButton:not(foo) {
       color: $link;
     }
   }

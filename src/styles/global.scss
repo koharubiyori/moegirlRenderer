@@ -1,5 +1,9 @@
 // 全局生效样式，不要在这里写和模块内容有关的样式
 
+:root {
+  overflow-x: hidden;
+}
+
 // 不要给body会影响高度的样式，也不要给mw-parser-output添加外边距，会导致pageHeightObserver在获取内容高度时不准确
 body {
   margin: 10px;
