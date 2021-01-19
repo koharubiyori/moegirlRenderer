@@ -3,6 +3,7 @@ import Hammer from 'hammerjs'
 import './index.scss'
 import vibrate from '../_vibrate'
 import request from '../_request'
+import I18nText from '~/utils/i18nText'
 
 export interface BiliVideoData {
   type: 'av' | 'bv'
@@ -12,9 +13,9 @@ export interface BiliVideoData {
 
 const { config } = createModuleConfig('biliPlayer', {
   texts: {
-    loading: '标题获取中',
-    removed: '视频又挂了',
-    netErr: '标题获取失败'
+    loading: new I18nText({ 'zh-hans': '标题获取中', 'zh-hant': '標題獲取中' }),
+    removed: new I18nText({ 'zh-hans': '视频又挂了', 'zh-hant': '影片又掛了' }),
+    netErr: new I18nText({ 'zh-hans': '标题获取失败', 'zh-hant': '標題獲取失敗' })
   },
   onClick: () => {},
   onLongPress: () => {}
@@ -49,14 +50,14 @@ export default () => {
       })
         .then(res => {
           if (res.code !== 0) {
-            playerButton.text(res.code === -404 ? config.texts.removed : config.texts.netErr)
+            playerButton.text((res.code === -404 ? config.texts.removed : config.texts.netErr) as string)
           } else {
             playerButton.text(res.data.title)
           }
         })
         .catch(e => {
           console.log(e)
-          playerButton.text(config.texts.netErr)
+          playerButton.text(config.texts.netErr as string)
         })
     }
 

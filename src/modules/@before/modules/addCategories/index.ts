@@ -1,9 +1,10 @@
 import createModuleConfig from '~/utils/createModuleConfig'
+import I18nText from '~/utils/i18nText'
 import './index.scss'
 
 const { config } = createModuleConfig('addCategories', {
   categories: [],
-  text: '分类'
+  text: new I18nText({ 'zh-hans': '分类', 'zh-hant': '分類' })
 })
 
 // 添加分类

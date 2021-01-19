@@ -40,7 +40,8 @@ window.moegirl = {
     // moegirl.config.request.onRequested = (data) => console.log('req', data)
     // moegirl.config.hostScrollMode.enabled = true
     moegirl.config.dataCollector.contentsData = console.log
-    moegirl.config.nightTheme.$enabled = true
+    moegirl.data.language = 'zh-hant'
+    // moegirl.config.nightTheme.$enabled = true
     moegirl.init()
   }
 })()

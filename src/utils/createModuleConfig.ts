@@ -1,3 +1,5 @@
+import I18nText from './i18nText'
+
 // 创建模块配置
 export interface ModuleConfig<ModuleName extends keyof Moegirl['config']> {
   config: Moegirl['config'][ModuleName]
@@ -31,6 +33,17 @@ export default function createModuleConfig<T extends keyof Moegirl['config']>(mo
         }
 
         return true
+      },
+
+      
+      get(target, prop) {
+        // 适配国际化
+        const value = target[prop]
+        if (value instanceof I18nText) {
+          return (value.textMaps as any)[moegirl.data.language || 'zh-hans']
+        }
+
+        return value
       }
     })
   })(initialConfig, [])

@@ -1,5 +1,7 @@
 // 注意：修改collapsible的样式将影响navbox
-.mw-collapsible:not(foo) {
+
+// 排除toggle模板([id^="mw-customcollapsible-"])
+.mw-collapsible:not([id^="mw-customcollapsible-"]) {
   background-color: var(--color-background);
   margin: 1em 0;
   border: 1px var(--color-border) solid;

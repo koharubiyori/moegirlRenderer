@@ -4,12 +4,15 @@ interface Window {
   RLQ: Function[]
 }
 
+type I18nText = string | __MoegirlConfig.I18n['text']
+
 declare interface Moegirl {
   init(): void
   readonly initialized: boolean
   data: {
     // 可以设置data里的字段，一些模块会根据这里的数据做判断
     pageName?: string
+    language?: string
   }
   method: {
     // 一些模块会向外提供方法
@@ -29,15 +32,15 @@ declare interface Moegirl {
     }
 
     collapsible: {
-      $showButtonText: string // 展开按钮文字
-      $hideButtonText: string // 隐藏按钮文字
+      $showButtonText: I18nText // 展开按钮文字
+      $hideButtonText: I18nText // 隐藏按钮文字
     }
 
     biliPlayer: {
       texts: {
-        loading: string
-        removed: string
-        netErr: string
+        loading: I18nText
+        removed: I18nText
+        netErr: I18nText
       }
       onClick(payload: __MoegirlConfig.BiliPlayer['videoData']): void
       onLongPress(payload: __MoegirlConfig.BiliPlayer['videoData']): void
@@ -67,13 +70,13 @@ declare interface Moegirl {
     // 在页面底部添加版权信息
     addCopyright: {
       enabled: boolean
-      content: string
+      content: I18nText
     }
 
     // 在页面底部添加分类
     addCategories: {
       categories: string[]  // 分类数据
-      text: string  // 分类文字的国际化
+      text: I18nText  // 分类文字的国际化
     }
 
     // 宿主滚动模式，取消webview中的滚动，并提供一个内容高度变化时的监听函数

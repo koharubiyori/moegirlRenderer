@@ -1,9 +1,10 @@
 import createModuleConfig from '~/utils/createModuleConfig'
+import I18nText from '~/utils/i18nText'
 import './index.scss'
 
 const { config, watchChange } = createModuleConfig('collapsible', {
-  $showButtonText: '[展开]',
-  $hideButtonText: '[收起]'
+  $showButtonText: new I18nText({ 'zh-hans': '[展开]', 'zh-hant': '[展開]' }),
+  $hideButtonText: new I18nText({ 'zh-hans': '[收起]', 'zh-hant': '[收起]' })
 })
 
 watchChange<string>('$showButtonText', value => {
@@ -17,7 +18,7 @@ watchChange<string>('$hideButtonText', value => {
 // 收起展开栏
 export default () => {
   $('.mw-collapsible').each(function() {
-    const collapseButtonText = (collapsed: boolean) => collapsed ? config.$showButtonText : config.$hideButtonText
+    const collapseButtonText = (collapsed: boolean) => (collapsed ? config.$showButtonText : config.$hideButtonText) as string
     
     const isCollapsed = $(this).hasClass('mw-collapsed')
     const collapseButton = $('<div class="collapseButton">')
