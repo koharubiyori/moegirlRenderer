@@ -30,7 +30,7 @@ moegirl.init()
 - sourceMap：是否附加行内的代码source map
 
 使用`yarn start`启动开发服务器。
-使用`yarn build`命令进行编译。该项目生成的文件服务目标为移动app端，所以只生成一个main.js文件。如果要分离样式和依赖包等请自行在`/config`文件夹下修改webpack配置。
+使用`yarn build`命令进行编译。该项目生成的文件服务目标为移动app端，所以只生成一个main.js和一个main.css文件。如果要分离依赖包等请自行在`/config`文件夹下修改webpack配置。
 
 ### 添加模块
 
