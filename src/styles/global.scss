@@ -6,22 +6,11 @@
 
 // 不要给body会影响高度的样式，也不要给mw-parser-output添加外边距，会导致pageHeightObserver在获取内容高度时不准确
 body {
-  margin: 0;
-  padding: 10px;
-  box-sizing: border-box;
+  margin: 10px;
   font-size: 16px;
-  height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
-
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.2);
-  }
 }
-
 
 h1, h2 {
   font-weight: initial;
