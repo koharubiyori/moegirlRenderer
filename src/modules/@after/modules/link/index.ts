@@ -52,7 +52,7 @@ const { config, addMethod } = createModuleConfig('link', {
 })
 
 addMethod('gotoAnchor', (anchorName: string, offset = 0) => {
-  animateScrollTo($('#' + anchorName).offset()!.top + offset, {
+  animateScrollTo($(document.getElementById(anchorName)!).offset()!.top + offset, {
     maxDuration: 400
   })
 })
