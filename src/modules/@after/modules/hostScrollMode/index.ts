@@ -1,5 +1,4 @@
 import createModuleConfig from '~/utils/createModuleConfig'
-import './index.scss'
 
 const { config } = createModuleConfig('hostScrollMode', {
   enabled: false,
@@ -9,13 +8,9 @@ const { config } = createModuleConfig('hostScrollMode', {
 // 页面高度观察者
 export default () => {
   if (!config.enabled) { return }
-  $('body').addClass('hostScrollMode')
-  
-  if (config.onResize === null) { return }
-  const iframe = $('<iframe class="pageHeightObserver">')
-  $('.mw-parser-output').append(iframe)
+  const resizeObserver = new ResizeObserver(([resize]) => {
+    config.onResize && config.onResize(resize.contentRect.height)
+  })
 
-  const iframeWindow = (iframe.get(0) as HTMLIFrameElement).contentWindow!
-  $(iframeWindow).on('resize', () => config.onResize($('html').height()!))
-  setTimeout(() => config.onResize($('html').height()!))
+  resizeObserver.observe($('html').get(0))
 }
