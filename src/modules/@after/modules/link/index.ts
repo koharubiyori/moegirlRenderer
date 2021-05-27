@@ -13,6 +13,10 @@ export interface LinkDataMaps {
     name: string
     thumbnailUrl: string
   }
+  gallery: {
+    imageFileNames: string[]
+    clickedIndex: number
+  }
   note: {
     id: string
     html: string
@@ -76,7 +80,27 @@ export default function link() {
 
         // 图片
         if (/^File:/.test(pageName)) {
-         return triggerOnClick('img', { 
+          // 判断是否为画廊
+          const isInGallery = $(this).parents('.gallery')
+          if (isInGallery.length !== 0) {
+            const gallery = isInGallery.eq(0)
+            const galleryImages: string[] = []
+            gallery.find('.image').each((index, item) => {
+              console.log(item)
+              const imageFileName = $(item).attr('href')!.replace(/^\/File:/, '') 
+              galleryImages.push(decodeURIComponent(imageFileName))
+            })
+
+            const clickedImageName = pageName.replace(/^File:/, '')
+            const clickedIndex = galleryImages.findIndex(item => item === clickedImageName)
+            
+            return triggerOnClick('gallery', { 
+              imageFileNames: galleryImages,
+              clickedIndex
+            })
+          }
+
+          return triggerOnClick('img', { 
             name: pageName.replace(/^File:/, ''),
             thumbnailUrl: ($(e.target).attr('src') || $(this).find('img').eq(0).attr('src'))!,
           })

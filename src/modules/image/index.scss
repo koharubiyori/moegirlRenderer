@@ -47,6 +47,13 @@ ul.gallery {
     background-color: transparent;
   }
 
+  .gallerycaption {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
   li {
     list-style: none;
     display: inline-block;
