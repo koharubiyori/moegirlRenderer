@@ -13,7 +13,13 @@ export default function after() {
   $('#toc').remove()  // 移除目录  
 
   // 大部分信息模板都是带float: right样式的table，这里做个判断将其全部改为居中
-  $('table').filter((_, item) => getComputedStyle(item).float === 'right').css({ float: 'none', margin: '0 auto' })
+  $('table')
+    .filter((_, item) => 
+      getComputedStyle(item).float === 'right' ||
+      item.getAttribute('align') === 'right'
+    )
+    .css({ float: 'none', margin: '0 auto' })
+    .removeAttr('align')
 
   $(':root').css('--max-content-width', $('.mw-parser-output').width()! + 'px')
   // 发现在手机端有获取到0px的情况，这里做个延时再赋值

@@ -1,4 +1,4 @@
 module.exports = {
-  devServerPort: 8901,
+  devServerPort: 8900,
   sourceMap: false
 }
