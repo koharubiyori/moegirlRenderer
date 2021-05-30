@@ -1,6 +1,6 @@
 .infobox {
   float: none !important;
-  margin: 10px auto;
+  margin: 10px auto !important;
 
   // 排除Album Infobox/Chronology模板
   > tbody > tr > td:not(:only-child):nth-child(1):not([style="width: 33%; text-align:center;"]) {

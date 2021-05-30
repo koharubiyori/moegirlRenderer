@@ -1,13 +1,15 @@
 import I18nText from './i18nText'
 
 // 创建模块配置
-export interface ModuleConfig<ModuleName extends keyof Moegirl['config']> {
+
+type ModuleNames = keyof Moegirl['config'] & keyof Moegirl['method']
+export interface ModuleConfig<ModuleName extends ModuleNames> {
   config: Moegirl['config'][ModuleName]
   watchChange<T = any>(propPath: string, handler: (value: T) => void): void
-  addMethod(methodName: string, fn: Function): void
+  addMethod<MethodName extends keyof Moegirl['method'][ModuleName]>(methodName: MethodName, fn: Moegirl['method'][ModuleName][MethodName]): void
 }
 
-export default function createModuleConfig<T extends keyof Moegirl['config']>(moduleName: T, initialConfig: Moegirl['config'][T]): ModuleConfig<T> {
+export default function createModuleConfig<T extends ModuleNames>(moduleName: T, initialConfig: Moegirl['config'][T]): ModuleConfig<T> {
   if (!window.moegirl) window.moegirl = {} as any
   if (!window.moegirl!.config) window.moegirl!.config = {} as any
 
@@ -49,7 +51,7 @@ export default function createModuleConfig<T extends keyof Moegirl['config']>(mo
   })(initialConfig, [])
 
   const watchChange = <T = any>(propPath: string, handler: (value: T) => void) => propertyProxyHandlers[propPath as any] = handler
-  const addMethod = (methodName: string, fn: Function) => {
+  const addMethod = <MethodName extends keyof Moegirl['method'][T]>(methodName: MethodName, fn: Moegirl['method'][T][MethodName]) => {
     if (!window.moegirl.method) window.moegirl.method = {} as any
     if (!(window.moegirl.method as any)[moduleName]) (window.moegirl.method as any)[moduleName] = {} as any
     ;(window.moegirl.method as any)[moduleName][methodName] = fn

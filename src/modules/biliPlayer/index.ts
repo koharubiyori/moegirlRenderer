@@ -25,7 +25,7 @@ const { config } = createModuleConfig('biliPlayer', {
 export default () => {
   $('.wikitable.bilibili-video-container').each(function () {
     let videoId = $(this).data('id').toString()
-    const page = $(this).data('page')
+    const page = parseInt($(this).data('page') || '0')
 
     const isAvId = /^([aA][vV]|)\d+$/.test(videoId)
     videoId = videoId.replace(/^([aA][vV]|[bB][vV])/, '')

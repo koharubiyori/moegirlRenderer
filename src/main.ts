@@ -26,20 +26,20 @@ window.moegirl = {
     const commonUrlRegex = /https:\/\/img\.moegirl\.org\.cn\/common\//g
     const replaceToProxyUrl = (url: string) => url.replace(commonUrlRegex, `http://localhost:${config.devServerPort}/common/`)
     $('body').get(0).innerHTML += articleHtml
-    // $('body')
-    //   .find('img, source').each(function() {
-    //     const src = $(this).attr('src') || ''
-    //     const srcset = $(this).attr('srcset') || ''
-    //     if (![commonUrlRegex.test(src), commonUrlRegex.test(srcset)].includes(true)) { return }
-    //     $(this)
-    //       .attr('src', replaceToProxyUrl(src))
-    //       .attr('srcset', replaceToProxyUrl(srcset))
-    //   })
+    $('body')
+      .find('img, source').each(function() {
+        const src = $(this).attr('src') || ''
+        const srcset = $(this).attr('srcset') || ''
+        if (![commonUrlRegex.test(src), commonUrlRegex.test(srcset)].includes(true)) { return }
+        $(this)
+          .attr('src', replaceToProxyUrl(src))
+          .attr('srcset', replaceToProxyUrl(srcset))
+      })
 
     moegirl.config.link.onClick = (payload) => location.href = `http://localhost:${config.devServerPort}?${payload.data.pageName}`
     // moegirl.config.request.onRequested = (data) => console.log('req', data)
     // moegirl.config.hostScrollMode.enabled = true
-    moegirl.config.dataCollector.contentsData = console.log
+    // moegirl.config.dataCollector.contentsData = console.log
     // moegirl.config.nightTheme.$enabled = true
     moegirl.init()
   }

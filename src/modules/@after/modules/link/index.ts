@@ -10,11 +10,10 @@ export interface LinkDataMaps {
     anchor: string
   }
   img: {
-    name: string
-    thumbnailUrl: string
-  }
-  gallery: {
-    imageFileNames: string[]
+    images: {
+      title: string
+      fileName: string
+    }[]
     clickedIndex: number
   }
   note: {
@@ -67,6 +66,8 @@ export default function link() {
   
   $('a').on('click', function(e) {
     e.preventDefault()
+    if (/^javascript:/.test($(this).attr('href')!)) { return }
+    
     let link = ($(e.target).attr('href') || $(e.target).parent('a').attr('href') || $(this).attr('href'))!
     link = decodeURIComponent(link)
     
@@ -84,25 +85,34 @@ export default function link() {
           const isInGallery = $(this).parents('.gallery')
           if (isInGallery.length !== 0) {
             const gallery = isInGallery.eq(0)
-            const galleryImages: string[] = []
-            gallery.find('.image').each((index, item) => {
-              console.log(item)
-              const imageFileName = $(item).attr('href')!.replace(/^\/File:/, '') 
-              galleryImages.push(decodeURIComponent(imageFileName))
+            const galleryImages: {
+              title: string
+              fileName: string
+            }[] = []
+
+            gallery.find('.gallerybox').each((index, item) => {
+              const imageFileName = $(item).find('.image').attr('href')!.replace(/^\/File:/, '') 
+              galleryImages.push({
+                fileName: decodeURIComponent(imageFileName),
+                title: $(item).find('.gallerytext').text()
+              })
             })
 
             const clickedImageName = pageName.replace(/^File:/, '')
-            const clickedIndex = galleryImages.findIndex(item => item === clickedImageName)
+            const clickedIndex = galleryImages.findIndex(item => item.fileName === clickedImageName)
             
-            return triggerOnClick('gallery', { 
-              imageFileNames: galleryImages,
+            return triggerOnClick('img', { 
+              images: galleryImages,
               clickedIndex
             })
           }
 
           return triggerOnClick('img', { 
-            name: pageName.replace(/^File:/, ''),
-            thumbnailUrl: ($(e.target).attr('src') || $(this).find('img').eq(0).attr('src'))!,
+            images: [{
+              fileName: pageName.replace(/^File:/, ''),
+              title: ''
+            }],
+            clickedIndex: 0
           })
         }
 
@@ -157,6 +167,8 @@ export default function link() {
 
   // 给外链图片添加点击显示大图
   $('img:not([data-file-width][data-file-height])').on('click', function() {
+    // 有的外链图片会有作为a标签内容的情况，这里直接返回防止一次触发两种点击事件(a标签跳转和查看外链图片)
+    if ($(this).parent().get(0).tagName.toLowerCase() === 'a') { return }
     triggerOnClick('externalImg', { url: $(this).attr('src')! })
   })
 }

@@ -1,0 +1,8 @@
+.appleMusic, .bandcamp, .spotify {
+  max-width: 100%;
+  position: relative;
+  
+  > iframe {
+    max-width: 100%;
+  }
+}

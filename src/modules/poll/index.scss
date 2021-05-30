@@ -1,0 +1,44 @@
+.ajaxpoll {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px dashed #999;
+  background: #fafafa;
+  padding: 10px;
+  font-size: 14px;
+
+  .ajaxpoll-ajax {
+    background: var(--color-light);
+    padding: 1px 4px;
+    border-radius: 0.5em;
+    display: none;
+  }
+
+  .ajaxpoll-misc {
+    margin: 3px 0;
+  }
+
+  .ajaxpoll-question {
+    font-weight: bold;
+  }
+
+  .ajaxpoll-answer-name, 
+  .ajaxpoll-answer-name-revoke {
+    font-size: 0.9em;
+    padding: 3px 0;
+
+    input[type="radio"] {
+      position: relative;
+      top: 2px;
+    }
+  }
+
+  .ajaxpoll-info {
+    margin-top: 10px;
+    color: #808080;
+  }
+
+  .ajaxpoll-id-info {
+    font-size: 12px;
+    text-align: right;
+  }
+}

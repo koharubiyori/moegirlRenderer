@@ -14,12 +14,6 @@ declare interface Moegirl {
     pageName?: string
     language?: string
   }
-  method: {
-    // 一些模块会向外提供方法
-    link: {
-      gotoAnchor(anchorName: string, offset?: number): void
-    }
-  }
   config: {
     // 在此声明配置的类型并添加注释，可响应属性使用$开头
     heimu: {
@@ -88,6 +82,20 @@ declare interface Moegirl {
     // 数据收集器，通过分析dom传回数据
     dataCollector: {
       contentsData(data: __MoegirlConfig.DataSelector['contentData'][]): void
+    }
+
+    // 投票
+    poll: {
+      onPoll(pollId: string, answer: number): void
+    }
+  }
+  method: {
+    // 一些模块会向外提供方法
+    link: {
+      gotoAnchor(anchorName: string, offset?: number): void
+    }
+    poll: {
+      updatePollContent(pollId: string, content: string): void
     }
   }
 }

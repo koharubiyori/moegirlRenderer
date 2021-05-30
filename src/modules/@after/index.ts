@@ -21,9 +21,11 @@ export default function after() {
     .css({ float: 'none', margin: '0 auto' })
     .removeAttr('align')
 
-  $(':root').css('--max-content-width', $('.mw-parser-output').width()! + 'px')
-  // 发现在手机端有获取到0px的情况，这里做个延时再赋值
-  setTimeout(() => {
-    $(':root').css('--max-content-width', $('.mw-parser-output').width()! + 'px') // 添加一个最大内容宽度变量
-  }, 3000)
+
+  const resizeObserver = new ResizeObserver(([resize]) => {
+    const contentWidth = resize.contentRect.width - 10 + 'px'
+    $(':root').css('--max-content-width', contentWidth)  
+  })
+
+  resizeObserver.observe($('.mw-parser-output').get(0))
 }
