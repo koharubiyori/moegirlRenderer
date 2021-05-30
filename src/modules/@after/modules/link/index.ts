@@ -102,14 +102,17 @@ export default function link() {
             const clickedIndex = galleryImages.findIndex(item => item.fileName === clickedImageName)
             
             return triggerOnClick('img', { 
-              images: galleryImages,
+              images: galleryImages.map(item => ({ 
+                ...item, 
+                fileName: item.fileName.replace(/_/g, ' ')
+              })),
               clickedIndex
             })
           }
 
           return triggerOnClick('img', { 
             images: [{
-              fileName: pageName.replace(/^File:/, ''),
+              fileName: pageName.replace(/^File:/, '').replace(/_/g, ' '),
               title: ''
             }],
             clickedIndex: 0
