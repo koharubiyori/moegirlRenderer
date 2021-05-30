@@ -37,7 +37,7 @@ window.moegirl = {
       })
 
     moegirl.config.link.onClick = (payload) => location.href = `http://localhost:${config.devServerPort}?${payload.data.pageName}`
-    // moegirl.config.request.onRequested = (data) => console.log('req', data)
+    moegirl.config.request.onRequested = (data) => console.log('req', data)
     // moegirl.config.hostScrollMode.enabled = true
     // moegirl.config.dataCollector.contentsData = console.log
     // moegirl.config.nightTheme.$enabled = true

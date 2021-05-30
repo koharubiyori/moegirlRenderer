@@ -1,15 +1,20 @@
 import I18nText from './i18nText'
 
 // 创建模块配置
-
-type ModuleNames = keyof Moegirl['config'] & keyof Moegirl['method']
-export interface ModuleConfig<ModuleName extends ModuleNames> {
+export interface ModuleConfig<ModuleName extends keyof Moegirl['config']> {
   config: Moegirl['config'][ModuleName]
   watchChange<T = any>(propPath: string, handler: (value: T) => void): void
-  addMethod<MethodName extends keyof Moegirl['method'][ModuleName]>(methodName: MethodName, fn: Moegirl['method'][ModuleName][MethodName]): void
+  addMethod<
+    ModuleName extends keyof Moegirl['method'], 
+    _MethodName extends keyof Moegirl['method'][ModuleName] = keyof Moegirl['method'][ModuleName]
+  >(
+    methodName: _MethodName, 
+    fn: Moegirl['method'][ModuleName][_MethodName]
+  ): void
 }
 
-export default function createModuleConfig<T extends ModuleNames>(moduleName: T, initialConfig: Moegirl['config'][T]): ModuleConfig<T> {
+export default function createModuleConfig<T extends keyof Moegirl['config']>(moduleName: T, initialConfig: Moegirl['config'][T]): ModuleConfig<T> {
+  type ModuleName = T
   if (!window.moegirl) window.moegirl = {} as any
   if (!window.moegirl!.config) window.moegirl!.config = {} as any
 
@@ -50,8 +55,8 @@ export default function createModuleConfig<T extends ModuleNames>(moduleName: T,
     })
   })(initialConfig, [])
 
-  const watchChange = <T = any>(propPath: string, handler: (value: T) => void) => propertyProxyHandlers[propPath as any] = handler
-  const addMethod = <MethodName extends keyof Moegirl['method'][T]>(methodName: MethodName, fn: Moegirl['method'][T][MethodName]) => {
+  const watchChange: ModuleConfig<ModuleName>['watchChange'] = (propPath, handler) => propertyProxyHandlers[propPath as any] = handler
+  const addMethod: ModuleConfig<ModuleName>['addMethod'] = (methodName, fn) => {
     if (!window.moegirl.method) window.moegirl.method = {} as any
     if (!(window.moegirl.method as any)[moduleName]) (window.moegirl.method as any)[moduleName] = {} as any
     ;(window.moegirl.method as any)[moduleName][methodName] = fn

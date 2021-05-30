@@ -54,7 +54,7 @@ const { config, addMethod } = createModuleConfig('link', {
   onClick: () => {}
 })
 
-addMethod('gotoAnchor', (anchorName: string, offset = 0) => {
+addMethod<'link'>('gotoAnchor', (anchorName: string, offset = 0) => {
   animateScrollTo($(document.getElementById(anchorName)!).offset()!.top + offset, {
     maxDuration: 400
   })
@@ -94,7 +94,7 @@ export default function link() {
               const imageFileName = $(item).find('.image').attr('href')!.replace(/^\/File:/, '') 
               galleryImages.push({
                 fileName: decodeURIComponent(imageFileName),
-                title: $(item).find('.gallerytext').text()
+                title: $(item).find('.gallerytext').text().trim()
               })
             })
 
@@ -112,7 +112,7 @@ export default function link() {
 
           return triggerOnClick('img', { 
             images: [{
-              fileName: pageName.replace(/^File:/, '').replace(/_/g, ' '),
+              fileName: pageName.replace(/^File:/, '').replace(/_/g, ' ').trim(),
               title: ''
             }],
             clickedIndex: 0

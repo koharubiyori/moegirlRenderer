@@ -3,6 +3,7 @@ import { LinkDataMaps } from '~/modules/@after/modules/link'
 import { RequestData } from '~/modules/_request'
 import { ContentData } from '~/modules/@after/modules/dataCollector'
 import I18nText from '~/utils/i18nText'
+import { PollData } from '~/modules/poll'
 
 
 export = MoegirlConfig
@@ -28,5 +29,9 @@ declare namespace MoegirlConfig {
 
   interface DataSelector {
     contentData: ContentData
+  }
+
+  interface Poll {
+    pollData: PollData
   }
 }
