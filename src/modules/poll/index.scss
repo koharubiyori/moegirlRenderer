@@ -32,6 +32,34 @@
     }
   }
 
+  .ajaxpoll-answer-vote {
+    position: relative;
+    background: #eee;
+    border: 1px #666 solid;
+    height: 20px;
+    line-height: 20px;
+    text-indent: 5px;
+    margin-top: 5px;
+    
+    > :first-child {
+      position: relative;
+      z-index: 1;
+
+      &::after {
+        display: inline;
+        content: ' (' attr(title) ')';
+      }
+    }
+
+    > :last-child {
+      height: 20px;
+      background: #ccc;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
   .ajaxpoll-info {
     margin-top: 10px;
     color: #808080;
