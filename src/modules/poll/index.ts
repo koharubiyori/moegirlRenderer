@@ -20,7 +20,7 @@ export default () => {
     const pollId = $(this).attr('poll')!
     const answer = parseInt($(this).attr('answer')!)
     const token = $(this).parents('.ajaxpoll').find('input[name="ajaxPollToken"]').val() as string
-    $(this).parents('ajaxpoll').find('.ajaxpoll-ajax').text('提交投票中...')
+    $(this).parents('.ajaxpoll').find('.ajaxpoll-ajax').text('提交投票中...')
     
     config.onPoll({ pollId, answer, token })
   })
