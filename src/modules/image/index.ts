@@ -4,6 +4,7 @@ import './index.scss'
 export default async () => {
   const resizeObserver = new ResizeObserver(([resize]) => {
     const maxWidth = resize.contentRect.width - 10
+    if (maxWidth < 0) { return }
     
     $('.thumb > .thumbinner').css('width', '')
     $('.image > img').each(function() {
